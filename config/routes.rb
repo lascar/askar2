@@ -3,10 +3,10 @@ require 'api_constraints'
 Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: :true) do
-      resources :elements
+      resources :elements, except: [:new, :edit]
     end
     # scope module: :v2, constraints: ApiConstraints.new(version: 2) do
-    #   resources :elements
+    #   resources :elements, except: [:new, :edit]
     # end
   end
 
