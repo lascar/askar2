@@ -1,8 +1,9 @@
+# config/application.rb
+
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
 require "active_model/railtie"
-require "active_job/railtie"
 require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
@@ -28,8 +29,10 @@ module Askar2
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
     config.generators do |g|
+      g.assets false
+      g.helper false
+      g.template_engine false
       g.test_framework :rspec,
         fixtures: false,
         view_specs: false,
@@ -38,6 +41,5 @@ module Askar2
         request_specs: false,
         controller_specs: true
     end
-    config.active_record.raise_in_transactional_callbacks = true
   end
 end
