@@ -1,14 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Element, type: :model do
-  before do
-    @element = Element.new(name: "Element1")
-  end
  
-  subject { @element }
- 
-  describe "when name is not present" do
-    before { @element.name = " " }
-    it { should_not be_valid }
+  describe 'when name is not present' do
+    it 'should be invalid' do
+
+      expect{ create(:element_invalid)}.to raise_error(ActiveRecord::RecordInvalid)
+      
+    end
   end
 end

@@ -19,31 +19,21 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe Api::V1::ElementsController, type: :controller do
-
-  # This should return the minimal set of attributes required to create a valid
-  # Element. As you add validations to Element, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
-
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
-
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # ElementsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "assigns all elements as @elements" do
-      element = Element.create! valid_attributes
+      element1 = create(:element_valid_1)
+      element2 = create(:element_valid_2)
+      
       get :index, {}, valid_session
-      expect(assigns(:elements)).to eq([element])
+      
+      expect(JSON.parse(response.body).to_json).to eq(Element.all.to_json)
+      expect(response.header['Content-Type']).to include('application/json')
     end
   end
 
+=begin
   describe "GET #show" do
     it "assigns the requested element as @element" do
       element = Element.create! valid_attributes
@@ -140,5 +130,5 @@ RSpec.describe Api::V1::ElementsController, type: :controller do
       expect(response).to redirect_to(elements_url)
     end
   end
-
+=end
 end
