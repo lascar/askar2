@@ -13,8 +13,8 @@
 /tmp
 
 # Ignore application configuration
-/config/secrets.yml
-/config/application.yml
+config/ENV_DEVELOPMENT
+config/ENV_TEST
 
 # Ignore vim files
 *~
