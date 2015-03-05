@@ -29,6 +29,19 @@ module Askar2
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.action_mailer.default_url_options = { :host => ENV['APPLICATION_HOST'], port: ENV['APPLICATION_PORT'] }
+    config.action_mailer.delivery_method = :smtp
+
+    config.action_mailer.smtp_settings = {
+      address: ENV['SERVER_MAIL'],
+      port: ENV['SERVER_MAIL_PORT'],
+      domain: ENV['SERVER_MAIL_DOMAIN'],
+      authentication: ENV['SERVER_MAIL_AUTHENTICATION'],
+      enable_starttls_auto: ENV['SERVER_MAIL_ENABLE_STARTTLS'],
+      user_name: ENV['SERVER_MAIL_USER_NAME'],
+      password: ENV['SERVER_MAIL_PASSWORD']
+    }
+
     config.generators do |g|
       g.assets false
       g.helper false

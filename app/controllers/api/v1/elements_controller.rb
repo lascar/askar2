@@ -1,7 +1,8 @@
 module Api
   module V1
-    class ElementsController < ApplicationController
+    class ElementsController < Api::ApiController
       before_action :set_element, only: [:show, :edit, :update, :destroy]
+      before_action :authenticate
 
       # GET /api/elements
       # GET /api/elements.json

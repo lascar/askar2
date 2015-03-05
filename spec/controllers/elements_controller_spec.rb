@@ -19,14 +19,15 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe Api::V1::ElementsController, type: :controller do
-  let(:valid_session) { {} }
+  let!(:valid_user) {create(:valid_user)}
 
   describe "GET #index" do
     it "assigns all elements as @elements" do
       element1 = create(:element_valid_1)
       element2 = create(:element_valid_2)
       
-      get :index, {}, valid_session
+      request.headers['X-API-KEY'] = valid_user.api_key
+      get :index
       
       expect(JSON.parse(response.body).to_json).to eq(Element.all.to_json)
       expect(response.header['Content-Type']).to include('application/json')
