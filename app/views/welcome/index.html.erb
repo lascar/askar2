@@ -1,15 +1,14 @@
-<% if user_signed_in? %>
-  <li>
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-  </li>
-   <li>
-     <%= link_to('Edit registration', edit_user_registration_path) %>
-  </li>
-<% else %>
-  <li>
-    <%= link_to('Login', new_user_session_path)  %>  
-  </li>
-  <li>
-    <%= link_to('Register', new_user_registration_path)  %>
-  </li>
-<% end %>
+<div class="container-fluid" ng-app="askar2">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h1 ng-if="name">Hello, {{name}}</h1>
+    </div>
+    <div class="panel-body">
+      <form class="form-inline">
+        <div class="form-group">
+          <input class="form-control" type="text" placeholder="Enter your name" autofocus ng-model="name">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

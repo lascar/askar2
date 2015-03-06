@@ -23,3 +23,6 @@ config/ENV_TEST
 # Ignore me
 *.toto
 *.org
+
+# Ignore bower
+/vendor/assets/bower_components

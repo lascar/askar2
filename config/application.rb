@@ -32,6 +32,11 @@ module Askar2
     config.action_mailer.default_url_options = { :host => ENV['APPLICATION_HOST'], port: ENV['APPLICATION_PORT'] }
     config.action_mailer.delivery_method = :smtp
 
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components")
+    #config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets")
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
+    config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
+
     config.action_mailer.smtp_settings = {
       address: ENV['SERVER_MAIL'],
       port: ENV['SERVER_MAIL_PORT'],

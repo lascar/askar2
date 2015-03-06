@@ -1,0 +1,5 @@
+asset 'jquery'
+asset 'jquery-ujs'
+asset 'angular'
+asset 'bootstrap-sass-official'
+# vim: ft=ruby

@@ -2,13 +2,20 @@
 <html>
 <head>
   <title>Askar2</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+<div class="container-narrow">
+  <div class="masthead">
+    <%= render 'layouts/user_header' %>
+    <h3 class="muted"><%= link_to "Askar2", root_path %></h3>
+    <h5 class="muted">An One Page Site</h5>
+  </div>
+  <hr />
+  <%= yield %>
+</div>
 
 </body>
 </html>
